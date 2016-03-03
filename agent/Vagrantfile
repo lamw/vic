@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+
+# dbc flavored box for building against ESX's glibc version and toolchain
+
+Vagrant.configure(2) do |config|
+  dir = ENV["GOPATH"] || Dir.home
+  config.vm.box = "boxcutter/centos64"
+  config.vm.host_name = "dbc"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.synced_folder dir, dir
+
+  [:vmware_fusion, :vmware_workstation].each do |visor|
+    config.vm.provider visor do |v, override|
+      v.vmx["memsize"] = "2048"
+    end
+  end
+
+  config.vm.provision "shell", :inline => <<EOS
+yum -y install gcc gdb strace
+EOS
+end
