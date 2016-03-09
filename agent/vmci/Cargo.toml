@@ -1,0 +1,7 @@
+[package]
+name = "vmci"
+version = "0.1.0"
+authors = ["vIC developers <vic-eng@vmware.com>"]
+
+[dependencies]
+libc = "*"

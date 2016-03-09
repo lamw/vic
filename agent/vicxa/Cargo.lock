@@ -1,0 +1,18 @@
+[root]
+name = "vicxa"
+version = "0.1.0"
+dependencies = [
+ "vmci 0.1.0",
+]
+
+[[package]]
+name = "libc"
+version = "0.2.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "vmci"
+version = "0.1.0"
+dependencies = [
+ "libc 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
+]
